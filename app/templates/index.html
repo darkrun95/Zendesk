@@ -18,28 +18,47 @@
 				<br/>
 				Tickets on this page: {{ page_tickets }}
 			</h4>
-			<h5>
+			<div>
 				{% if flag %}
 					<h4>
-						{% for page_number in total_pages %}
-							<a href="{{url_for('main.index', page_value=page_number, flash=False, _external=True)}}">
-								<li>
-									{{ page_number }}
+						<ul>
+							{% for page_number in total_pages %}
+								<li class="ct_pagination">
+									<a href="{{url_for('main.index', page_value=page_number, flash=False, _external=True)}}">
+										{{ page_number }}
+									</a>
 								</li>
-							</a>
-						{% endfor %}
+							{% endfor %}
+						</ul>
 					</h4>
-					<ul>
-						{% for item in response.tickets %}
-							<a href="{{url_for('main.ticket', ticket_number=item.id, _external=True)}}">
-								<li>
-									{{ item.id }}, {{ item.subject }}, {{ item.status }}
-								</li>
-							</a>
-						{% endfor %}
-					</ul>
+
+					<table>
+						<thead>
+							<tr>
+								<th class="ticket_id">Ticket ID</th>
+								<th class="ticket_subject">Subject</th>
+								<th class="ticket_status">Status</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{% for item in response.tickets %}
+								<tr>
+									<td class="ticket_id">{{ item.id }}</td>
+									<td class="ticket_subject">
+										<a href="{{url_for('main.ticket', ticket_number=item.id, _external=True)}}">
+											{{ item.subject }}
+										</a>
+									</td>
+									<td class="ticket_status">{{ item.status }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+
 				{% endif %}
-			</h5>
+			</div>
 		</div>
 	{% else %}
 		<div>

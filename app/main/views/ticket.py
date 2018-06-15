@@ -1,4 +1,4 @@
-from . import main
+from app.main import main
 from configuration import Configuration
 
 from flask import render_template, url_for, flash, request
@@ -6,51 +6,6 @@ import requests
 from math import ceil
 import datetime
 import json
-
-@main.route("/", methods=['GET'])
-def index():
-	page_value = request.args.get("page_value")
-	flash_value = request.args.get("flash")
-	if not page_value:
-		page_value = "1"
-
-	flag = True
-
-	request_url = "https://"+Configuration.subdomain+"/api/v2/tickets.json?per_page=" + str(Configuration.per_page_tickets) + "&page=" + page_value + "&sort_by=id"
-	headers = {
-		"Authorization": "Basic {0}".format(Configuration.encoded_string)
-	}
-
-	try:
-		response = requests.get(request_url, headers=headers)
-	
-		if not response.ok:
-			flash("Credentials Incorrect. Access denied.","error")
-			flag = False
-		else:
-			if not flash_value or flash_value == 'True':
-				flash("Tickets fetched successfully", "success")
-			response = response.json()
-			count_tickets = response['count']
-
-			if count_tickets != 0:
-				total_pages = ceil(count_tickets/Configuration.per_page_tickets)
-			else:
-				total_pages = 0
-			page_tickets = len(response['tickets'])
-	
-		return render_template("index.html", 
-								valid_response=True,
-								response=response, 
-								flag=flag, 
-								total_tickets=count_tickets, 
-								page_tickets=page_tickets,
-								total_pages=range(1, total_pages+1)), 200
-	except json.decoder.JSONDecodeError:
-		return render_template("index.html", 
-							   valid_response=False), 200
-	except requests.exceptions.ConnectionError:
-		return render_template("errors/503.html"), 503
 
 @main.route("/ticket/<int:ticket_number>", methods=['GET'])
 def ticket(ticket_number):

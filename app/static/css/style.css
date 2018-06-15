@@ -1,0 +1,31 @@
+div h4 ul li.ct_pagination{
+	display: inline-block;
+	border: 1px solid #000;
+	width: 3%;
+	text-align: center;
+	font-size: 15px;
+}
+
+table{
+	width: 100%;
+}
+
+table thead tr th.ticket_id, table thead tr th.ticket_status{
+	text-align: center;
+}
+
+table thead tr th.ticket_id{
+	width: 20%;
+}
+
+table thead tr th.ticket_subject{
+	width: 60%;
+}
+
+table thead tr th.ticket_status{
+	width: 20%;
+}
+
+table tbody tr td.ticket_id, table tbody tr td.ticket_status{
+	text-align: center
+}
