@@ -1,0 +1,41 @@
+{% extends "header.html" %}
+
+{% block title %}
+	Ticket Viewer
+{% endblock %}
+
+{% block page_content %}
+	<div class="page-header">
+		<h3 class="h3">
+			Zendesk Ticket Viewer
+		</h3>
+	</div>
+
+	<div>
+		<h4>
+			{{ ticket_information.ticket.subject }}
+			<br/>
+			<small>
+				<strong>
+					Opened By : {{ user_name }}	
+				</strong>
+				<br/>
+				{{ created_at }}
+			</small>
+		</h4>
+		<h5>
+			Status: {{ ticket_information.ticket.status }}
+		</h5>
+		<h5>
+			Description: 
+			<br/>
+			{{ ticket_information.ticket.description }}
+		</h5>
+	</div>
+
+	<div>
+		<a href="{{url_for('main.index', page_value=page_number, flash=False, _external=True)}}">
+			Back To All Tickets	
+		</a>
+	</div>
+{% endblock %}

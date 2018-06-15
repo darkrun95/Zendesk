@@ -1,0 +1,51 @@
+{% extends "header.html" %}
+
+{% block title %}
+	Ticket Viewer
+{% endblock %}
+
+{% block page_content %}
+	<div class="page-header">
+		<h3 class="h3">
+			Zendesk Ticket Viewer
+		</h3>
+	</div>
+
+	{% if valid_response %}
+		<div>
+			<h4>
+				Total Tickets: {{ total_tickets }}
+				<br/>
+				Tickets on this page: {{ page_tickets }}
+			</h4>
+			<h5>
+				{% if flag %}
+					<h4>
+						{% for page_number in total_pages %}
+							<a href="{{url_for('main.index', page_value=page_number, flash=False, _external=True)}}">
+								<li>
+									{{ page_number }}
+								</li>
+							</a>
+						{% endfor %}
+					</h4>
+					<ul>
+						{% for item in response.tickets %}
+							<a href="{{url_for('main.ticket', ticket_number=item.id, _external=True)}}">
+								<li>
+									{{ item.id }}, {{ item.subject }}, {{ item.status }}
+								</li>
+							</a>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</h5>
+		</div>
+	{% else %}
+		<div>
+			<h4>
+				No tickets fetched.
+			</h4>
+		</div>
+	{% endif %}
+{% endblock %}
