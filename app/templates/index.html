@@ -1,4 +1,4 @@
-{% extends "header.html" %}
+{% extends "base/header.html" %}
 
 {% block title %}
 	Ticket Viewer
@@ -22,13 +22,27 @@
 				{% if flag %}
 					<h4>
 						<ul>
-							{% for page_number in total_pages %}
-								<li class="ct_pagination">
-									<a href="{{url_for('main.index', page_value=page_number, flash=False, _external=True)}}">
+							{% if lower_limit %}
+								<a href="{{url_for('main.index', page_value=lower_limit_val - 1, flash=False, _external=True)}}">
+									<li class="ct_pagination">
+										<
+									</li>
+								</a>
+							{% endif %}
+							{% for page_number in page_range %}
+								<a href="{{url_for('main.index', page_value=page_number, flash=False, _external=True)}}">
+									<li class="ct_pagination">
 										{{ page_number }}
-									</a>
-								</li>
+									</li>
+								</a>
 							{% endfor %}
+							{% if upper_limit %}
+								<a href="{{url_for('main.index', page_value=upper_limit_val + 1, flash=False, _external=True)}}">
+									<li class="ct_pagination">
+										>
+									</li>
+								</a>
+							{% endif %}
 						</ul>
 					</h4>
 
@@ -55,8 +69,6 @@
 							{% endfor %}
 						</tbody>
 					</table>
-
-
 				{% endif %}
 			</div>
 		</div>
