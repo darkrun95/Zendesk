@@ -48,10 +48,10 @@
 			<i>pip3 install -r requirements.txt</i>
 		</li>
 	</ul>
-	<ul>
 	Steps for execution:
+	<ul>
+	From within the root directory for the application
 		<li>
-		From within the root directory for the application
 			<i>python3 manage.py runserver</i>
 		</li>
 	</ul>
