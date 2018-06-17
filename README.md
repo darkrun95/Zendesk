@@ -12,16 +12,16 @@
 				<li>
 					Linux:
 					<br/>
-					sudo apt-get install python3
+					<i>sudo apt-get install python3</i>
 				</li>
 				<li>
 					MacOS:
 					<br/>
-					If <strong>brew</strong> not installed - 
+					If <strong>Homebrew</strong> not installed - 
 					<br/>
-					ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+					<i>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</i>
 					<br/>
-					brew install python
+					<i>brew install python</i>
 				</li>
 			</ul>
 		</li>
@@ -31,7 +31,7 @@
 				<li>
 					Linux:
 					<br/>
-					sudo apt-get install python3-pip
+					<i>sudo apt-get install python3-pip</i>
 				</li>
 				<li>
 					MacOS:
