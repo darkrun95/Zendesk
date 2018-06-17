@@ -41,4 +41,10 @@
 			</ul>
 		</li>
 	</ul>
+	Installation Steps:
+	<ul>
+		<li>
+			pip3 install -r requirements.txt
+		</li>
+	</ul>
 </p>
