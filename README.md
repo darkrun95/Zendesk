@@ -55,4 +55,11 @@
 			<i>python3 manage.py runserver</i>
 		</li>
 	</ul>
+	Run Test Cases:
+	<ul>
+	From within the root directory for the application, along with the server running.
+		<li>
+			<i>python3 tests.py</i>
+		</li>
+	</ul>
 </p>
