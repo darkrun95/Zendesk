@@ -5,7 +5,9 @@ class Configuration():
 	SECRET_KEY = "arunpottekat"
 
 	# API configurations for the application
-	encoded_string = b64encode(b"pottekatarun1995@gmail.com:something123")
+
+	encoded_string = b"pottekatarun1995@gmail.com:something123"
+	encoded_string = b64encode(encoded_string)
 	encoded_string = encoded_string.decode("utf-8")
 	subdomain = "something1995.zendesk.com"
 

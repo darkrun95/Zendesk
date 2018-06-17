@@ -8,9 +8,6 @@ import json
 
 @main.route("/", methods=['GET'])
 def index():
-	# Flash message display flag
-	flag = True
-
 	# Pagination range values
 	upper_limit = None
 	lower_limit = None
@@ -37,7 +34,10 @@ def index():
 
 		if not response.ok:
 			flash("Credentials Incorrect. Access denied.","error")
-			flag = False
+
+			return render_template("index.html", 
+									valid_response=False,
+									flag=False), 200
 		else:
 			if not flash_value or flash_value == 'True':
 				flash("Tickets fetched successfully", "success")
@@ -69,10 +69,10 @@ def index():
 			# Total tickets displayed on the current page.
 			page_tickets = len(response['tickets'])
 	
-		return render_template("index.html", 
+			return render_template("index.html", 
 								valid_response=True,
+								flag=True,
 								response=response, 
-								flag=flag, 
 								total_tickets=count_tickets, 
 								page_tickets=page_tickets,
 								upper_limit=upper_limit,
