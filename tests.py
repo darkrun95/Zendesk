@@ -3,10 +3,9 @@ import urllib
 import requests
 from flask import Flask
 from flask_testing import TestCase
-
 from configuration import Configuration
 
-class MyTest(TestCase):
+class TestCases(TestCase):
 	def create_app(self):
 		app = Flask(__name__)
 		app.config['TESTING'] = True
@@ -48,7 +47,6 @@ class MyTest(TestCase):
 		ticket_response = ticket_response.json()
 		self.assertEqual(ticket_response['ticket']['subject'], "Sample ticket: Meet the ticket")
 		return
-
 
 if __name__ == '__main__':
 	unittest.main()

@@ -1,6 +1,22 @@
-Zendesk Coding Challenge
+<h3>
+	Zendesk Coding Challenge
+</h3>
 
-Modes of operation:
-DEVELOPMENT
-PRODUCTION
-TESTING
+<p>
+	<ul>
+		<li>
+			Modes of Operation
+			<ul>
+				<li>
+					DEVELOPMENT
+				</li>
+				<li>
+					TESTING
+				</li>
+				<li>
+					PRODUCTION
+				</li>
+			</ul>
+		</li>
+	</ul>
+</p>
