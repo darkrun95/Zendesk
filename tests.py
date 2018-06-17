@@ -41,10 +41,28 @@ class TestCases(TestCase):
 		self.assertEqual(ticket_response.status_code, 200)
 		return
 
-	# Check whether the application is up.
-	def test_running(self):
-		response = requests.get("http://127.0.0.1:5000")
-		self.assertEqual(response.code, 200)
+	# Check if each page has less than or equal to "per_page" tickets
+	def test_correct_ticket_count(self):
+		request_url = "https://" + \
+					  Configuration.subdomain + \
+					  "/api/v2/tickets.json?per_page=" + str(Configuration.per_page_tickets) + \
+					  "&sort_by=id"
+
+		headers = {
+			"Authorization": "Basic {0}".format(Configuration.encoded_string)
+		}
+
+		response = requests.get(request_url, headers=headers)
+		response = response.json()
+		next_page = response['next_page']
+
+		while next_page:
+			if len(response['tickets']) > 25:
+				raise Exception("Invalid Page Tickets")
+
+			response = requests.get(next_page, headers=headers)
+			response = response.json()
+			next_page = response['next_page']
 		return
 
 	# Checking the sample ticket, whether ticket fetched matches the id for the ticket.

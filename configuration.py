@@ -25,6 +25,6 @@ class prod_configuration(Configuration):
 	DEBUG = False
 
 configuration = {
-	'default': dev_configuration,
+	'development': dev_configuration,
 	'production': prod_configuration 
 }
