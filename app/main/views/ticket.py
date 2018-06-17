@@ -11,7 +11,9 @@ import json
 def ticket(ticket_number):
 	try:
 		# Fetch particular ticket details 
-		ticket_url = "https://"+Configuration.subdomain+"/api/v2/tickets/"+str(ticket_number)+".json"
+		ticket_url = "https://" + \
+					 Configuration.subdomain + \
+					 "/api/v2/tickets/"+str(ticket_number)+".json"
 		
 		headers = {
 			"Authorization": "Basic {0}".format(Configuration.encoded_string)
@@ -22,7 +24,9 @@ def ticket(ticket_number):
 
 		# Fetch user details for the requested ticket.
 		user_id = ticket_response['ticket']['requester_id']
-		user_url = "https://"+Configuration.subdomain+"/api/v2/users/"+str(user_id)+".json"
+		user_url = "https://" + \
+				   Configuration.subdomain + \
+				   "/api/v2/users/"+str(user_id)+".json"
 		user_response = requests.get(user_url, headers=headers)
 
 		try:
