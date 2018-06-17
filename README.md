@@ -43,15 +43,15 @@
 	</ul>
 	Installation Steps:
 	<ul>
-		From within the root directory for the application
+	From within the root directory for the application
 		<li>
 			<i>pip3 install -r requirements.txt</i>
 		</li>
 	</ul>
-	<br/>
 	<ul>
-		Steps for execution:
+	Steps for execution:
 		<li>
+		From within the root directory for the application
 			<i>python3 manage.py runserver</i>
 		</li>
 	</ul>
