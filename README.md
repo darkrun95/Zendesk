@@ -3,18 +3,23 @@
 </h3>
 
 <p>
+	Installation Requirements:
+	<br/>
 	<ul>
 		<li>
-			Modes of Operation
+			Python3:
 			<ul>
 				<li>
-					DEVELOPMENT
+					Ubuntu:
+					<br/>
+					sudo apt-get install python3
 				</li>
 				<li>
-					TESTING
-				</li>
-				<li>
-					PRODUCTION
+					MacOS:
+					<br/>
+					If <strong>brew</strong> not installed - 
+					<br/>
+					ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 				</li>
 			</ul>
 		</li>
